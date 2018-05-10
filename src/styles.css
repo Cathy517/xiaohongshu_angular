@@ -1,0 +1,41 @@
+@import '../node_modules/onsenui/css/onsenui.css';
+@import '../node_modules/onsenui/css/onsen-css-components.css';
+@import "./assets/iconfont/iconfont.css";
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 55.2px;
+    background-color: #f5f8fa;
+    font-family: sans-serif;
+    line-height: 1.15;
+}
+
+body {
+    overflow: auto;
+    font-size: 0.26rem;
+    font-family: -apple-system, SF UI Text, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    color: #333;
+}
+
+li {
+    list-style: none
+}
+
+a:link {
+    color: #333;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #333;
+    text-decoration: none;
+}

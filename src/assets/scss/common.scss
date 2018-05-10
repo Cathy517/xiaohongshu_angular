@@ -1,0 +1,35 @@
+$white:#fff;
+$black:#333;
+$grey:#8a8a8a;
+$red:#ff2741;
+$blue:#5b92e1;
+$default-bg:#f5f8fa;
+$font-size-default:.28rem;
+.framework {
+    margin-top: 1.78rem;
+}
+
+.avatar {
+    display: inline-block;
+    vertical-align: top;
+    width: .6rem;
+    height: .6rem;
+    position: relative;
+    span,
+    .avatar-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        font-size: 0;
+    }
+    .official-verified-icon {
+        width: .2rem;
+        height: .2rem;
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 10
+    }
+}

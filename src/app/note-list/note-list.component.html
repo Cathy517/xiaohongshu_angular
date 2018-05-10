@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="framework">
+    <ul class="category">
+        <li class="category-item">推荐</li>
+        <li class="category-item">上海</li>
+        <li class="category-item">视频</li>
+        <li class="category-item">时尚</li>
+        <li class="category-item">护肤</li>
+        <li class="category-item">彩妆</li>
+        <li class="category-item">美食</li>
+        <li class="category-item">旅行</li>
+        <li class="category-item">影视</li>
+    </ul>
+    <div class="note-item-wrapper">
+        <ul class="note-item-wall">
+            <li class="article" *ngFor="let item of noteItem">
+                <a [routerLink]="['/item',item.id]">
+                    <div>
+                        <img src="{{item.cover.original}}" alt="">
+                    </div>
+                    <div class="note-content">
+                        <h3 class="note-title">{{item.title}}</h3>
+                        <p class="note-desc">{{item.desc}}
+                        </p>
+                    </div>
+                    <div class="note-info">
+                        <div class="note-author">
+                            <a href="" class="avatar">
+                                <span class=""><img src="{{item.user.image}}" alt="" class="avatar-img"></span>
+                                <img *ngIf="item.user.official_verified" src="./assets/img/official.jpg" alt="小红书官方认证" class="official-verified-icon">
+                            </a>
+                            <a href="" class="note-author-nickname">{{item.user.nickname}}</a>
+                        </div>
+                        <span class="note-likes">
+                  <i class="iconfont icon-xin"></i>
+                  <span>{{item.likes}}</span>
+                        </span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

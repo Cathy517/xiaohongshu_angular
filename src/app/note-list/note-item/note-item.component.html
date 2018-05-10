@@ -1,0 +1,130 @@
+<div *ngIf="noteDetail&&noteComment" class="note-item">
+    <div class="note-header">
+        <i class="iconfont icon-zuojiantou1"></i>
+        <span>{{noteDetail.user.nickname}}</span>
+        <i class="iconfont icon-more"></i>
+    </div>
+    <div class="gallery-cover">
+        <ons-carousel swipeable auto-scroll overscrollable itemCount (postchange)="slideChanged($event)">
+            <ons-carousel-item class="carousel-item" *ngFor='let imgLink of noteDetail.images,let i=index'>
+                <div #carousel class="note-image-container">
+                    <img class="note-image" src="{{imgLink.original}}" alt="">
+                    <div class="img-indicator">
+                        {{i}}/{{noteDetail.images.length}}
+                    </div>
+                </div>
+            </ons-carousel-item>
+        </ons-carousel>
+    </div>
+    <div class="note-content-container">
+        <div class="author-info">
+            <div class="note-author">
+                <a href="" class="avatar">
+                    <span class=""><img src="{{noteDetail.user.image}}" alt="" class="avatar-img"></span>
+                    <img *ngIf="noteDetail.user.official_verified" src="./assets/img/official.jpg" alt="小红书官方认证" class="official-verified-icon">
+                </a>
+                <h3 class="note-author-nickname">
+                    <a href="">{{noteDetail.user.nickname}}</a>
+                    <img *ngIf='noteDetail.user.level' class="level" src="{{noteDetail.user.level.image}}" alt="">
+                </h3>
+            </div>
+            <a href="" class="focus-btn cube-button">+关注</a>
+        </div>
+
+        <div class="note">
+            <h1 class="title">{{noteDetail.title}}</h1>
+            <div class="note-content">
+                <p *ngFor="let para of noteContentArray">{{para}}
+                    <!-- <a href="" *ngIf="para.indexOf('[话题]#')!=-1">
+                            <a href="" *ngIf="noteDetail.hash_tags.name"></a>
+                        </a> -->
+                </p>
+            </div>
+            <div class="note-bottom">
+                <div class="publish-date">{{noteDetail.time}}</div>
+                <div class="collection">{{noteDetail.collects}}次收藏</div>
+                <div class="like">{{noteDetail.likes}}次赞</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="top">
+                <div class="comment-header">
+                    <span class="title-text">笔记评论</span>
+                    <span class="comment-num">
+                        共{{noteDetail.comments}}条评论
+                        <i class="iconfont icon-jiantouyou"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="comment-content">
+                <div class="current-user">
+                    <div class="avatar">
+                        <span><img src="{{noteDetail.user.image}}" alt="" class="avatar-img"></span>
+                        <img *ngIf="noteDetail.user.official_verified" src="./assets/img/official.jpg" alt="小红书官方认证" class="official-verified-icon">
+                    </div>
+                    <div class="promp">想勾搭，先评论</div>
+                </div>
+                <ul class="user-comment">
+                    <li class="user-comment-item" *ngFor="let item of noteComment.comments">
+                        <div class="comment-info">
+                            <a href="" class="avatar">
+                                <span><img class="avatar-img" src="{{item.user.image}}" alt=""></span>
+                            </a>
+                            <div class="user-info">
+                                <div class="user-nickname">
+                                    <a href="">{{item.user.nickname}}</a>
+                                </div>
+                                <p>
+                                    {{item.content}}
+                                </p>
+                                <div class="content-info">
+                                    <span class="publish-time">{{item.time}}</span>
+                                    <span class="huifu">回复 · </span>
+                                    <span class="likes">
+                                        <i class="iconfont icon-dianzan"></i> {{item.likes}}
+                                    </span>
+                                </div>
+                                <div *ngIf="item.sub_comments.length!=0" class="reply">
+                                    <div>
+                                        <span>{{item.sub_comments[0].user.nickname}}</span>
+                                        <span *ngIf="item.sub_comments[0].user.id==noteComment.target_note.user.id">(作者)</span>
+                                        <span *ngIf="item.sub_comments[0].target_comment.user.id!==item.user.id">回复{{item.sub_comments[0].target_comment.user.nickname}}</span>
+                                        <span>: {{item.sub_comments[0].content}}</span>
+                                    </div>
+                                    <div class="sub_comments_total">共{{item.sub_comments_total}}条回复 <i class="iconfont icon-jiantouyou"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="comment-bottom">
+                查看全部{{noteComment.total}}条评论
+            </div>
+        </div>
+    </div>
+    <div class="bottom-bar-warp">
+        <div class="note-data">
+            <ul>
+                <li>
+                    <i class="iconfont icon-like"></i>
+                    <span>赞</span>
+                    <span *ngIf="noteDetail.likes">· {{noteDetail.likes}}</span>
+                </li>
+                <li>
+                    <i class="iconfont icon-pinglun"></i>
+                    <span>评论</span>
+                    <span *ngIf="noteDetail.comments">· {{noteDetail.comments}}</span>
+                </li>
+                <li>
+                    <i class="iconfont icon-star"></i>
+                    <span>收藏</span>
+                    <span *ngIf="noteDetail.collects">· {{noteDetail.collects}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
